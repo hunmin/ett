@@ -10,9 +10,9 @@ import (
 )
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
-
 	tt := timetagger.NewTimeTagger()
+
+	reader := bufio.NewReader(os.Stdin)
 
 	for {
 		line, isPrefix, err := reader.ReadLine()
@@ -23,7 +23,6 @@ func main() {
 
 		if isPrefix {
 			fmt.Printf("%s", line)
-
 		} else {
 			fmt.Printf("%-8s | %s \n", tt.Tag(), line)
 		}

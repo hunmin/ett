@@ -6,8 +6,8 @@ import (
 )
 
 type TimeTagger struct {
-	start time.Time
-	val   string
+	start  time.Time
+	preTag string
 }
 
 func NewTimeTagger() *TimeTagger {
@@ -24,13 +24,13 @@ func (tt *TimeTagger) Tag() string {
 	diff -= (min * time.Minute)
 	sec := diff / time.Second
 
-	val := fmt.Sprintf("%02d:%02d:%02d", hour, min, sec)
+	tag := fmt.Sprintf("%02d:%02d:%02d", hour, min, sec)
 
-	if val != tt.val {
-		tt.val = val
+	if tag != tt.preTag {
+		tt.preTag = tag
 	} else {
-		val = ""
+		tag = ""
 	}
 
-	return val
+	return tag
 }
